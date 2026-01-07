@@ -16,6 +16,9 @@
   {{ end }}
   {{ $uniqueYearMonths := $yearMonths | uniq | sort }}
 
+  {{ if site.Params.listSectionsRecursive }}
+    {{ .Paginate .RegularPagesRecursive }}
+  {{ end }}
 
   <div class="list-container">
     <header class="list-header">
@@ -112,6 +115,8 @@
         }}
       {{ end }}
     </div>
+
+    {{ partial "pagination.html" . }}
 
     <!-- Navigation links -->
     {{ partial "back-to-home.html" . }}
